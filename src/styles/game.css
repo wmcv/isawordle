@@ -281,18 +281,26 @@
   .play-again-button {
     margin-top: 14px;
     min-width: 220px;
-    border: none;
-    border-radius: 8px;
-    background: #538d4e;
+    border: 1px solid #3f5f8f;
+    border-radius: 4px;
+    background: #4f78b7;
     color: white;
-    padding: 16px 22px;
-    font-size: 1.35rem;
+    padding: 12px 20px;
+    font-size: 1.1rem;
     font-weight: 800;
+    letter-spacing: 0.03em;
     cursor: pointer;
+    box-shadow: none;
+    transition: background 0.15s ease, transform 0.08s ease, border-color 0.15s ease;
   }
   
   .play-again-button:hover {
-    filter: brightness(1.08);
+    background: #5d88ca;
+    border-color: #4d73ac;
+  }
+  
+  .play-again-button:active {
+    transform: translateY(1px);
   }
   
   .status-line {
@@ -333,18 +341,24 @@
   
   .secondary-button {
     min-width: 140px;
-    border: none;
-    border-radius: 8px;
+    border: 1px solid #4a4a4d;
+    border-radius: 6px;
     background: #3a3a3c;
     color: white;
-    padding: 16px 22px;
+    padding: 14px 22px;
     font-size: 1.05rem;
     font-weight: 800;
     cursor: pointer;
+    transition: background 0.15s ease, transform 0.08s ease, border-color 0.15s ease;
   }
   
   .secondary-button:hover {
-    filter: brightness(1.08);
+    background: #4a4a4d;
+    border-color: #5a5a5d;
+  }
+  
+  .secondary-button:active {
+    transform: translateY(1px);
   }
   
   @media (max-width: 700px) {

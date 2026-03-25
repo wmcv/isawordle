@@ -264,7 +264,7 @@ export default function App() {
 
     const valid = await isDictionaryWord(submittedGuess, settings.wordLength);
     if (!valid) {
-      showToast("Not in dictionary");
+      showToast("Not in word list");
       return;
     }
 

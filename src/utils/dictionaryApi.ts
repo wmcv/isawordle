@@ -60,6 +60,7 @@ export async function isDictionaryWord(
 
   if (!/^[A-Z]+$/.test(normalized)) return false;
   if (normalized.length !== length) return false;
+  if (!/[AEIOUY]/.test(normalized)) return false;
 
   const cacheKey = `${length}:${normalized}`;
   if (validationCache.has(cacheKey)) {
@@ -72,7 +73,6 @@ export async function isDictionaryWord(
     );
 
     if (!response.ok) {
-      validationCache.set(cacheKey, false);
       return false;
     }
 
@@ -85,7 +85,6 @@ export async function isDictionaryWord(
     validationCache.set(cacheKey, isValid);
     return isValid;
   } catch {
-    validationCache.set(cacheKey, false);
     return false;
   }
 }

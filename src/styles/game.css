@@ -277,6 +277,14 @@
     color: #d7dadc;
     font-size: 1.1rem;
   }
+
+  .modal-compliment {
+    margin: 0 0 18px;
+    color: #d7dadc;
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.4;
+  }
   
   .play-again-button {
     margin-top: 14px;

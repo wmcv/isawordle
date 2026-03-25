@@ -24,6 +24,29 @@ const STORAGE_KEY = "wordle-unlimited-clean-v2";
 const REVEAL_STEP_MS = 220;
 const TILE_FLIP_DURATION_MS = 550;
 
+const WIN_COMPLIMENTS = [
+  "You're actually too pretty to be this smart too.",
+  "Okay genius, you're insane.",
+  "You're actually perfect and it's annoying.",
+  "How are you this clever for free?",
+  "You're ridiculously impressive.",
+  "You're so unreal honestly.",
+  "That was way too attractive.",
+  "You're actually everything.",
+  "You're so effortlessly amazing.",
+  "Be serious, you're incredible.",
+  "You're unfairly smart and cute.",
+  "That was so you.",
+  "You're actually a masterpiece.",
+  "You're way too good at this.",
+  "You're ridiculously special.",
+  "That was insanely impressive, wow.",
+  "You're actually my favorite type of genius.",
+  "You're too nice with it.",
+  "You're genuinely unreal.",
+  "Okay yeah, you're perfect.",
+];
+
 type SavedGame = {
   answer: string;
   guesses: string[];
@@ -125,6 +148,7 @@ export default function App() {
   const [displayedKeyStates, setDisplayedKeyStates] = useState<
     Record<string, LetterState>
   >({});
+  const [winCompliment, setWinCompliment] = useState("");
 
   const toastTimeoutRef = useRef<number | null>(null);
   const revealTimeoutsRef = useRef<number[]>([]);
@@ -169,6 +193,7 @@ export default function App() {
     clearRevealTimers();
     setRevealState(null);
     setDisplayedKeyStates({});
+    setWinCompliment("");
     setLoadingWord(true);
     setToast("");
 
@@ -201,6 +226,9 @@ export default function App() {
     setRevealState(null);
 
     if (submittedGuess === answer) {
+      const compliment =
+        WIN_COMPLIMENTS[Math.floor(Math.random() * WIN_COMPLIMENTS.length)];
+      setWinCompliment(compliment);
       setStatus("won");
       return;
     }
@@ -403,6 +431,7 @@ export default function App() {
       <GameOverModal
         status={status}
         answer={answer}
+        winCompliment={winCompliment}
         onPlayAgain={() => void startNewGame()}
       />
 
